@@ -1,26 +1,20 @@
 # Ray Tracer Report
 ## Marissa Manley - CAP4730 Computer Graphics Spring 2022
 
-### Compiling Guide for Visual Studio 2019:
+### Compiling Guide for Visual Studio 2019 on Windows:
 
-1. Install GLFW, GLEW, and GLM to a location on your computer. (https://www.glfw.org/download, http://glew.sourceforge.net/, https://sourceforge.net/projects/glm.mirror/)
-2. Download and add RayTracer.cpp to an empty Visual Studio 2019 project.
-3. Enter Project Properties -> C/C++ -> General; inside of the Additional Include Directories, add the directories at which your GLFW, GLEW, and GLM library files are located and link to the equivalent /include files. 
-4. Enter Project Properties -> Linker -> General; inside of the Additional Library Directories, add the directories at which your GLFW, GLEW, and GLM library files are and link to the equivalent /lib files. 
-5. Enter Project Properties -> Linker -> Input; inside of the Additional Dependencies, add the dependencies opengl32.lib, glfw3.lib, and glew32s.lib.
-6. Add the glew32.dll and glfw3.dll files into the directory with your RayTracer file.
-7. Within the Visual Studio 2019 Package Manager, feel free to run the following commands to include the appropriate GLFW and GLEW packages:
-	Install-Package glfw
-	Install-Package glew
-7. You can now either run the Ray Tracer by compiling and running the code in Visual Studio 2019 using the Local Windows Debugger or by entering the command prompt, entering the Directory with your RayTracer file with the cd command, and running the commands:
-	g++ -lglew -lglfw RayTracer.cpp
-	./a.out
+1. Install GLFW Windows 64-bit Binary, GLEW Windows 32-bit/64-bit Binary, and GLM-master library files to a location on your computer. (https://www.glfw.org/download, http://glew.sourceforge.net/, https://github.com/g-truc/glm)
+2. Download and add `RayTracer.cpp` as a Source File to an empty Visual Studio 2019 project, leave the .h file empty.
+3. Enter Project Properties -> C/C++ -> General; inside of the Additional Include Directories, link to the directories of your GLFW, GLEW, and GLM `\include` files (glm-master does not have an `\include` file, so you need only link to `\glm-master`). 
+4. Enter Project Properties -> Linker -> General; inside of the Additional Library Directories, link to the directory at which the GLFW `\lib-vc2022` and GLEW `\Win32` library files are located.
+5. Enter Project Properties -> Linker -> Input; inside of the Additional Dependencies, add the dependencies `opengl32.lib`, `glfw3.lib`, and `glew32s.lib`.
+7. Within the Visual Studio 2019 Package Manager Console, run the following commands to include the following GLFW and GLEW packages:
+	`Install-Package glfw`
+	`Install-Package glew`
+7. You can now run the Ray Tracer by compiling and running the code in Visual Studio 2019 using the Local Windows Debugger.
 
 ### Operation Guide:
 Press Z to switch from Orthographic camera to Perspective Camera
-
-
-**Note:** All functionalities required in the project were implemented and work correctly, so this report does not include subsections that describe required functionalities that did not work or were not implemented.
 
 
 ### Objects and Light Sources in Scene:
@@ -46,6 +40,13 @@ Press Z to switch from Orthographic camera to Perspective Camera
 
 ![Assignment1_0qMtuuKD18](https://user-images.githubusercontent.com/58527286/187339139-09157014-05b4-454d-9d9c-2b73a152736e.png)
 
+
+### Program Logic: 
+Aside from the content given in the provided script at the beginning of this project, the code consists of various classes, a trace function, a RayTrace function, and a main function. I create a class for a Camera, Light Source, Ray, and Shape, and there are three children classes of Shape: Sphere, Tetrahedron, and Plane.  
+
+All class objects are created in a RayTrace function, which is called in main. An array of shape objects is created and all scene objects are added to the array. Within the for loop that generates the RGB values for each pixel in the screen, a ray is generated based on the data from the camera and the current pixel. The shape array is traversed and each shape is checked to determine if the ray intersects with a shape. If there is no intersection, the background color is printed. If one or more shape is intersected, the closest shape to the camera is determined based on the calculated t value and printed to the screen after the respective diffuse shading, ambient shading, specular shading, reflection, and shadow calculations are completed (this is done in the trace function). 
+
+As part of the shadow calculations, a ray is generated from a shape’s intersection point to the light source to check if at least one more object is intersected on the way there, in which case the lighting and color are reduced in brightness. As part of the reflection calculations, a reflection ray is created from a point of intersection to check an object is intersected. If one or more shape is intersected by the reflection ray, the closest shape to the original point of intersection is determined and the reflected object’s color and shading information is taken into account when printing the original pixel value. 
 
 ### Functionality Compare:
 	
@@ -86,14 +87,6 @@ With/without specular shading and relfections:
 ![chrome_wnaLgX15ey](https://user-images.githubusercontent.com/58527286/187342120-f06de8fa-bd79-401b-81a1-b6220e0870af.png)
 
 
-### Program Logic: 
-Aside from the content given in the provided script at the beginning of this project, the code consists of various classes, a trace function, a RayTrace function, and a main function. I create a class for a Camera, Light Source, Ray, and Shape, and there are three children classes of Shape: Sphere, Tetrahedron, and Plane.  
-
-All class objects are created in a RayTrace function, which is called in main. An array of shape objects is created and all scene objects are added to the array. Within the for loop that generates the RGB values for each pixel in the screen, a ray is generated based on the data from the camera and the current pixel. The shape array is traversed and each shape is checked to determine if the ray intersects with a shape. If there is no intersection, the background color is printed. If one or more shape is intersected, the closest shape to the camera is determined based on the calculated t value and printed to the screen after the respective diffuse shading, ambient shading, specular shading, reflection, and shadow calculations are completed (this is done in the trace function). 
-
-As part of the shadow calculations, a ray is generated from a shape’s intersection point to the light source to check if at least one more object is intersected on the way there, in which case the lighting and color are reduced in brightness. As part of the reflection calculations, a reflection ray is created from a point of intersection to check an object is intersected. If one or more shape is intersected by the reflection ray, the closest shape to the original point of intersection is determined and the reflected object’s color and shading information is taken into account when printing the original pixel value. 
-
- 
 
 
 ### Acknowledgement 
