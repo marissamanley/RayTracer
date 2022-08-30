@@ -1,8 +1,20 @@
 # Ray Tracer Report
 ## Marissa Manley - CAP4730 Computer Graphics Spring 2022
 
-### Compiling Guide:
-See README.txt
+### Compiling Guide for Visual Studio 2019:
+
+1. Install GLFW, GLEW, and GLM to a location on your computer. (https://www.glfw.org/download, http://glew.sourceforge.net/, https://sourceforge.net/projects/glm.mirror/)
+2. Download and add RayTracer.cpp to an empty Visual Studio 2019 project.
+3. Enter Project Properties -> C/C++ -> General; inside of the Additional Include Directories, add the directories at which your GLFW, GLEW, and GLM library files are located and link to the equivalent /include files. 
+4. Enter Project Properties -> Linker -> General; inside of the Additional Library Directories, add the directories at which your GLFW, GLEW, and GLM library files are and link to the equivalent /lib files. 
+5. Enter Project Properties -> Linker -> Input; inside of the Additional Dependencies, add the dependencies opengl32.lib, glfw3.lib, and glew32s.lib.
+6. Add the glew32.dll and glfw3.dll files into the directory with your RayTracer file.
+7. Within the Visual Studio 2019 Package Manager, feel free to run the following commands to include the appropriate GLFW and GLEW packages:
+	Install-Package glfw
+	Install-Package glew
+7. You can now either run the Ray Tracer by compiling and running the code in Visual Studio 2019 using the Local Windows Debugger or by entering the command prompt, entering the Directory with your RayTracer file with the cd command, and running the commands:
+	g++ -lglew -lglfw RayTracer.cpp
+	./a.out
 
 ### Operation Guide:
 Press Z to switch from Orthographic camera to Perspective Camera
@@ -85,14 +97,14 @@ As part of the shadow calculations, a ray is generated from a shape’s intersec
 
 
 ### Acknowledgement 
-https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-powershell 
-https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection
-https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading/ligth-and-shadows
-https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector
-Fundamentals of Computer Graphics, 5th Edition (Marschner and Shirley)
-https://www.glfw.org/
-http://glew.sourceforge.net/
-https://github.com/g-truc/glm 
-Code provided by simpleTexture.cpp to output 2D pixels in a window on the screen
-CAP4730 Spring 2022 Slack #general channel discussions with classmates
-Class lecture slides on Ray Tracing and Lighting
+1. https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-powershell 
+2. https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection
+3. https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading/ligth-and-shadows
+4. https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector
+5. Fundamentals of Computer Graphics, 5th Edition (Marschner and Shirley)
+6. https://www.glfw.org/
+7. http://glew.sourceforge.net/
+8. https://github.com/g-truc/glm 
+9. Code provided by simpleTexture.cpp to output 2D pixels in a window on the screen
+10. CAP4730 Spring 2022 Slack #general channel discussions with classmates
+11. Class lecture slides on Ray Tracing and Lighting
