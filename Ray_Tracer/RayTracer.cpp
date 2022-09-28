@@ -147,7 +147,6 @@ void RayTracer::RayTrace() {
     }
 }
 
-
 Camera* RayTracer::getCamera() {
     return camera;
 }

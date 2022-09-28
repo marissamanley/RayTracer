@@ -37,7 +37,7 @@ void OpenGLManager::Start() {
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // // GLEW: load all OpenGL function pointers
+    // GLEW: load all OpenGL function pointers
     glewInit();
 
     // vertex shader
@@ -94,6 +94,7 @@ void OpenGLManager::Start() {
 
     // Initial orthographic perspective screen generation
     rayTracer.RayTrace();
+
     // render loop
     while (!glfwWindowShouldClose(window)) {
         ProcessInput();
