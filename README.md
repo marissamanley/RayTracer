@@ -3,15 +3,8 @@
 
 ### Compiling Guide for Visual Studio 2019 on Windows:
 
-1. Install GLFW Windows 64-bit Binary, GLEW Windows 32-bit/64-bit Binary, and GLM-master library files to a location on your computer. (https://www.glfw.org/download, http://glew.sourceforge.net/, https://github.com/g-truc/glm)
-2. Download the ZIP folder and upload `RayTracer.cpp` as a Source File to an Empty Visual Studio 2019 project.
-3. Enter Project Properties -> C/C++ -> General; inside of the Additional Include Directories, link to the directories of your GLFW, GLEW, and GLM `\include` files (glm-master does not have an `\include` file, so you need only link to `\glm-master`). 
-4. Enter Project Properties -> Linker -> General; inside of the Additional Library Directories, link to the directory at which the GLFW `\lib-vc2022` and GLEW `\Win32` library files are located.
-5. Enter Project Properties -> Linker -> Input; inside of the Additional Dependencies, add the dependencies `opengl32.lib`, `glfw3.lib`, and `glew32s.lib`.
-7. Within the Visual Studio 2019 Package Manager Console, run the following commands to include the following GLFW and GLEW packages:
-	`Install-Package glfw`
-	`Install-Package glew`
-7. You can now run the Ray Tracer by compiling and running the code in Visual Studio 2019 using the Local Windows Debugger.
+1. Download `RayTracer.zip` and extract the contents of the file.
+2. Open the `Ray_Tracer.sln` file through Visual Studio 2019 and execute the project using the Local Windows Debugger button.
 
 ### Operation Guide:
 Press Z to switch from Orthographic camera to Perspective Camera
