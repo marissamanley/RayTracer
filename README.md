@@ -4,7 +4,7 @@
 ### Compiling Guide for Visual Studio 2019 on Windows:
 
 1. Download `RayTracer.zip` and extract the contents of the file.
-2. Open the `Ray_Tracer.sln` file through Visual Studio 2019 and execute the project using the Local Windows Debugger button.
+2. Open the `Ray_Tracer.sln` file in Visual Studio 2019 and execute the project using the Local Windows Debugger button after switching to the `Release` Configuration to the right of the Local Windows Debugger button.
 
 ### Operation Guide:
 Press Z to switch from Orthographic camera to Perspective Camera
