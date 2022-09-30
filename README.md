@@ -4,7 +4,7 @@
 ### Compiling Guide for Visual Studio 2019 on Windows:
 
 1. Download `RayTracer.zip` and extract the contents of the file.
-2. Open the `Ray_Tracer.sln` file in Visual Studio 2019 and execute the project using the Local Windows Debugger button after switching to the `Release` Configuration to the left of the Local Windows Debugger button. 
+2. Open the `Ray_Tracer.sln` file in Visual Studio 2019 and execute the project using the Local Windows Debugger button after switching to the `Release` Configuration to the left of the Local Windows Debugger button.  
 **NOTE**: Visual Studio 2019 will need the Windows desktop development with C++ IDE
 
 
