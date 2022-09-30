@@ -1,4 +1,4 @@
-# Ray Tracer Report
+# Ray Tracer
 ## Marissa Manley - CAP4730 Computer Graphics Spring 2022
 
 ### Compiling Guide for Visual Studio 2019 on Windows:
