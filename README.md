@@ -11,6 +11,12 @@
 ### Operation Guide:
 Press Z to switch from Orthographic camera to Perspective Camera
 
+### Program Logic: 
+The program consists of a `RayTracer` class, `OpenGLManager` class, and a `main.cpp`. I created a class for a `Camera` object, `LightSource` object, `Ray` object, `Shape` object, and three children classes of `Shape`: `Sphere`, `Tetrahedron`, and `Plane`.  
+
+The `main()` function instantiates an `OpenGLManager` manager object which is then used to call the `Start()` function. From there, the OpenGL display widnow is generated. The manager creates a `RayTracer` object instance upon construction, which holds the `Camera`, `LightSource`, and an array of `Shapes` that consists of two `Sphere` objects, a `Tetrahedron`, and a `Plane`. The `RayTrace()` function is called, which creates the pixel array to be displayed as output. Within the for loop that generates the RGB values for each pixel in the screen, a `Ray` is generated for the current pixel. The `Shapes` array is traversed and each `Shape` is checked to determine if the `Ray` intersects with a `Shape`. If there is no intersection, the background color is printed. If one or more `Shape` is intersected, the closest `Shape` to the `Camera` is determined based on the calculated distance value and the colored pixel is printed to the screen after the diffuse shading, ambient shading, specular shading, reflection, and shadow calculations are completed (this is done in the `Trace()` function). 
+
+As part of the shadow calculations, a `Ray` is generated from a `Shape`’s intersection point in the direction of the `LightSource` to check if at least one more `Shape` is intersected on the way there, in which case the lighting and color are reduced in brightness. As part of the reflection calculations, if a reflective `Shape` is intersected, a reflection `Ray` is created from the point of intersection to check if a different `Shape` is intersected. If one or more `Shape` is intersected by the reflection `Ray`, the closest `Shape` to the original point of intersection is determined and the reflected `Shape`’s color and shading information is taken into account when printing the original pixel value. 
 
 ### Objects and Light Sources in Scene:
 **Orthographic Camera** - The center of the orthographic camera is at (0, -120, 0) and has a LookAt vector pointing in the direction (0.3f, 0.4f, 1), which is a tilted down and right-facing direction from above the objects in the scene. The camera canvas size is 256 x 256, while the resolution of the camera is 512 x 512. 
@@ -35,13 +41,6 @@ Press Z to switch from Orthographic camera to Perspective Camera
 
 ![Assignment1_0qMtuuKD18](https://user-images.githubusercontent.com/58527286/187339139-09157014-05b4-454d-9d9c-2b73a152736e.png)
 
-
-### Program Logic: 
-The program consists of a `RayTracer` class, `OpenGLManager` class, and a `main.cpp`. I created a class for a `Camera` object, `LightSource` object, `Ray` object, `Shape` object, and three children classes of `Shape`: `Sphere`, `Tetrahedron`, and `Plane`.  
-
-The `main()` function instantiates an `OpenGLManager` manager object which is then used to call the `Start()` function. From there, the OpenGL display widnow is generated. The manager creates a `RayTracer` object instance upon construction, which holds the `Camera`, `LightSource`, and an array of `Shapes` that consists of two `Sphere` objects, a `Tetrahedron`, and a `Plane`. The `RayTrace()` function is called, which creates the pixel array to be displayed as output. Within the for loop that generates the RGB values for each pixel in the screen, a `Ray` is generated for the current pixel. The `Shapes` array is traversed and each `Shape` is checked to determine if the `Ray` intersects with a `Shape`. If there is no intersection, the background color is printed. If one or more `Shape` is intersected, the closest `Shape` to the `Camera` is determined based on the calculated distance value and the colored pixel is printed to the screen after the diffuse shading, ambient shading, specular shading, reflection, and shadow calculations are completed (this is done in the `Trace()` function). 
-
-As part of the shadow calculations, a `Ray` is generated from a `Shape`’s intersection point in the direction of the `LightSource` to check if at least one more `Shape` is intersected on the way there, in which case the lighting and color are reduced in brightness. As part of the reflection calculations, if a reflective `Shape` is intersected, a reflection `Ray` is created from the point of intersection to check if a different `Shape` is intersected. If one or more `Shape` is intersected by the reflection `Ray`, the closest `Shape` to the original point of intersection is determined and the reflected `Shape`’s color and shading information is taken into account when printing the original pixel value. 
 
 ### Functionality Compare:
 	
